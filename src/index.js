@@ -1,7 +1,17 @@
 import connectDB from './db/index.js';
+import express from 'express';
+const app = express();
 
-
-connectDB();
+connectDB().then(()=>{
+   app.on("error",(erros)=>{
+      console.log("error has ocurred",error);
+   })
+   app.listen(process.env.PORT || 3000,()=>{
+      console.log(`the port is listening to ${process.env.PORT ||3000}`)
+   })
+}).catch((error)=>{
+   console.log("error",error);
+});
 /*
 import express from 'express';
 app = express();
